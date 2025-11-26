@@ -22,7 +22,7 @@ public class CollectableController : MonoBehaviour
     {
         if (objectSO != null)          //check if scriptable object is not null
         {
-            theRenderer.material.SetColor("Base Color", objectSO.color);         //for the renderer on the mesh of selected object, set the base color as the one we have added to the item in SO
+            theRenderer.material.SetColor("_BaseColor", objectSO.color);         //for the renderer on the mesh of selected object, set the base color as the one we have added to the item in SO
         }
     }
 }
