@@ -16,7 +16,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     private int activeItemIndex = -1;      //keeps track of which is active, set to minus so its invalid - hasnt been set
 
-    public void AddItem(CollectableItem itemToAddSO)   //to the class collectable item pass method add item and reference to scriptable objects we need to add                     
+    public void ItemAdded(CollectableItem itemToAddSO)   //to the class collectable item pass method add item and reference to scriptable objects we need to add                     
     {
         Debug.Log("Adding item " + itemToAddSO.ElementName);   //debug to see what is being added
 
@@ -52,7 +52,7 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public void DropItem()
+    public void ItemRemoved()
     {
         
         Debug.Log($"Dropping {inventory[activeItemIndex].typeItem.ElementName}");

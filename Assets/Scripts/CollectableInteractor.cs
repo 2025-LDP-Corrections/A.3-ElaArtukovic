@@ -17,7 +17,7 @@ public class CollectableInteractor : MonoBehaviour           //handle interactio
     {
         if (_inputs.drop == true)
         {
-            inventoryManager.DropItem();
+            inventoryManager.ItemRemoved();
             _inputs.drop = false;
         }
     }
@@ -45,7 +45,7 @@ public class CollectableInteractor : MonoBehaviour           //handle interactio
         CollectableItem theItem;                                            //reference to class collectable item with the item
         theItem = other.GetComponent<CollectableController>().objectSO;       //the item being reference to scriptable object from collectable controller
 
-        inventoryManager.AddItem(theItem);          //add the item to inventory manager
+        inventoryManager.ItemAdded(theItem);          //add the item to inventory manager
         Destroy(other.gameObject);                 //destroy the gameobject so it looks like we picked it up
     }
 }
