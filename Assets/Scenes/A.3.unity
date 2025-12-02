@@ -1174,6 +1174,30 @@ PrefabInstance:
       value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 7325826428743416407, guid: 66aee422348f74f4580ad31323f99b2c, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0101628
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325826428743416407, guid: 66aee422348f74f4580ad31323f99b2c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0003281
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325826428743416407, guid: 66aee422348f74f4580ad31323f99b2c, type: 3}
+      propertyPath: m_Size.z
+      value: 1.003843
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325826428743416407, guid: 66aee422348f74f4580ad31323f99b2c, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0033051968
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325826428743416407, guid: 66aee422348f74f4580ad31323f99b2c, type: 3}
+      propertyPath: m_Center.y
+      value: 0.00016403198
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325826428743416407, guid: 66aee422348f74f4580ad31323f99b2c, type: 3}
+      propertyPath: m_Center.z
+      value: -0.0019214749
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325826428743416407, guid: 66aee422348f74f4580ad31323f99b2c, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
