@@ -13,6 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool drop;
+		public bool collect;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -81,6 +82,11 @@ namespace StarterAssets
         {
             drop = true;
         }
+
+		public void OnCollect(InputValue value)
+		{
+			collect = true;
+		}
     }
 	
 }
