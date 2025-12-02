@@ -54,17 +54,46 @@ public class InventoryManager : MonoBehaviour
 
     public void ItemRemoved()
     {
+        if (activeItemIndex < 0 || activeItemIndex >= inventory.Count)          //if the current selected index is less than 0 - has no active item         //greater or equal means its outside of list 
+            return;
+        InventoryItem itemToRemove = inventory[activeItemIndex];                //get the currently active item from inv list
+
+        if (itemToRemove.typeItem.elementPrefab == null)                   //check if there is a prefab assigned, these are in element prefab on collectables in inspector
+        {
+            Debug.Log("No prefab assigned 4 this");
+        }
         
-        Debug.Log($"Dropping {inventory[activeItemIndex].typeItem.ElementName}");
+
+        Vector3 dropPosition = transform.position + transform.forward * 1f;                         //drop it at the players position in front of them 
+        Instantiate(itemToRemove.typeItem.elementPrefab, dropPosition, Quaternion.identity);        //instantiate to spawn a prefab of the boxes      //the item to remove is a collectable item - typeItem      //quanterion identity should have no rotations
+
+        Debug.Log($"Dropping {inventory[activeItemIndex].typeItem.ElementName}");          
+
+        itemToRemove.quantity--;           //remove quantity by one 
+
+        if (itemToRemove.quantity <= 0)       
+        {
+            inventory.RemoveAt(activeItemIndex);             //remove the currently selected item from inv list
+
+            if (inventory.Count == 0 )          //if the inv count is at 0, then active index should be -1 empty, should be selecting first item in list if at a 0
+                activeItemIndex = -1;
+            else
+                activeItemIndex = 0;  
+
+            if (activeItemIndex >= 0) 
+            OnActiveItemChanged?.Invoke(inventory[activeItemIndex]);     //tell systems the active item changed
+        }
     }
 
-    private void SetActiveItem(int indexOfNewActiveItem)
+    private void SetActiveItem(int indexOfNewActiveItem)                
     {
-        if (indexOfNewActiveItem >= 0 && indexOfNewActiveItem < inventory.Count)
+        if (indexOfNewActiveItem >= 0 && indexOfNewActiveItem < inventory.Count)             //check if new index inside list range
         {
-            activeItemIndex = 0;           //set to valid, only thing in it
-            InventoryItem theNewActiveItem = inventory[indexOfNewActiveItem];
-            OnActiveItemChanged?.Invoke(theNewActiveItem);
+            {
+                activeItemIndex = indexOfNewActiveItem;                                //changed from 0 cuz it sets it everytime, ignores passed index
+                InventoryItem theNewActiveItem = inventory[indexOfNewActiveItem];      //gets item that will be the active one
+                OnActiveItemChanged?.Invoke(theNewActiveItem);                         //tell systems active item changed
+            }
         }
     }
 
