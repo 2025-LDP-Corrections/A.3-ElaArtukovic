@@ -80,12 +80,14 @@ namespace StarterAssets
 
         public void OnDrop(InputValue value)
         {
+			Debug.Log("StarterAssetsInputs::OnDrop");
             drop = true;
         }
 
 		public void OnCollect(InputValue value)
 		{
-			collect = true;
+            Debug.Log("StarterAssetsInputs::OnCollect");
+            collect = true;
 		}
     }
 	
