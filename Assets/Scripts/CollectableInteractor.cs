@@ -15,11 +15,17 @@ public class CollectableInteractor : MonoBehaviour           //handle interactio
     // Update is called once per frame
     void Update()
     {
-        if (_inputs.drop == true)
+        if (_inputs.drop == true)           //if RMB is pressed then drop item
         {
-            inventoryManager.ItemRemoved();
-            _inputs.drop = false;
+            inventoryManager.ItemRemoved();       //gets removed from inventory
+            _inputs.drop = false;             
         }
+
+       // if (_inputs.collect == true)          //if LMB is pressed then collect
+        //{
+           // inventoryManager.ItemAdded();      //gets added to inventory
+           // _inputs.collect = false;
+        //}
     }
 
    
