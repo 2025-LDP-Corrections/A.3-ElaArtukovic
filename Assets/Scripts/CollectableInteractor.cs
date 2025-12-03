@@ -1,5 +1,4 @@
 using StarterAssets;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -65,8 +64,8 @@ public class CollectableInteractor : MonoBehaviour           //handle interactio
     {
                                                   
         theItem = other.GetComponent<CollectableController>().objectSO;       //the item being reference to scriptable object from collectable controller
-        inRange = true;
-        inventoryManager.ItemAdded(theItem);          //add the item to inventory manager
+        inRange = true;                            //if it collides then its in range
+        inventoryManager.ItemAdded(theItem);          //add the item to inventory manager        //this might be telling it to do it anytime it collides ughhhh
         Destroy(other.gameObject);                 //destroy the gameobject so it looks like we picked it up
     }
 }
