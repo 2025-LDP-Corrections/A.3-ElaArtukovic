@@ -1,6 +1,7 @@
 using StarterAssets;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class CollectableInteractor : MonoBehaviour           //handle interactions when we hit of objects, picking up and dropping
@@ -9,7 +10,7 @@ public class CollectableInteractor : MonoBehaviour           //handle interactio
     public InventoryManager inventoryManager;      //reference to the inventory manager
     public StarterAssetsInputs _inputs;
     public CollectableItem theItem;                //reference to scriptable object
-                                                   // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool inRange = false;                                               // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 
     // Update is called once per frame
@@ -28,7 +29,37 @@ public class CollectableInteractor : MonoBehaviour           //handle interactio
         //}
     }
 
-   
+    public void OnCollect(InputAction.CallbackContext context)          //set LMB for collecting and RMB for dropping
+    {
+        if (context.performed && inRange)             //if LMB is presed and the player is in range then collect item
+        {
+            CollectItem();
+        }
+    }
+
+    public void OnDrop(InputAction.CallbackContext context)
+    {
+        if (context.performed)               //if RMB is pressed then drop item
+        {
+            DropItem();
+        }
+    }
+
+    private void CollectItem()
+    {
+        if (theItem != null)                   //if an iten can be collected/not null, add the item to collect to the inventory using InvMan logic
+        {
+            inventoryManager.ItemAdded(theItem);
+            theItem = null;                       //reset it so more can be collected and it doesn't think the item i collected is still there
+            inRange = false;
+        }
+    }
+
+    private void DropItem()
+    {
+        inventoryManager.ItemRemoved();
+    }
+
 
     private void OnTriggerEnter(Collider other)        //if player collides with gameobjects
     {
