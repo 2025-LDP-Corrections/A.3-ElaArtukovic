@@ -50,7 +50,7 @@ public class CollectAndDrop : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        CollectableItem collectable = other.GetComponent<CollectableItem>();            //if item leaving is same as one in range(TC == collectable) then clear it and set it no longer in range 
+        CollectableItem collectable = other.GetComponent<CollectableItem>();            //if item leaving is same as one in range(TC == collectable) then clear it and set it no longer in range   //NOT WORKING BECAUSE NOT MONOBEHAVIOUR
         if (collectable == itemTC)
         {
             itemTC = null;
