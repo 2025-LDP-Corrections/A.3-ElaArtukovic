@@ -1,0 +1,15 @@
+name: A.3 Assessment
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  assess:
+    name: Run central A.3 assessment
+    uses: 2025-LDP-Corrections/A.3-Brief/.github/workflows/assess.yml@main
+    with:
+      unity_version: "6000.1.4f1"
